@@ -1,5 +1,5 @@
 import React from "react";
-import Login from "./login"; // ✅ Ensure correct import path
+import Login from "./components/login"; // ✅ Ensure correct import path
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 
 function App() {
