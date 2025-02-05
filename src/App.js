@@ -1,16 +1,24 @@
-import React from "react";
+import React, { useState } from "react";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
-import Login from "./login"; // Ensure the file name is correct (case-sensitive)
-import CoordinatorDashboard from "./CoordinatorDashboard"; // Ensure the file name is correct
+import Login from "./login"; // Ensure correct case
+import CoordinatorDashboard from "./CoordinatorDashboard";
+import PostJob from "./PostJob";
+import JobListings from "./JobListings"; // To display posted jobs
+import AppliedStudents from "./AppliedStudents"; // Import AppliedStudents page
+import EligibleStudents from "./EligibleStudents"; // Import EligibleStudents page
 
 function App() {
+  const [jobs, setJobs] = useState([]); // Store posted jobs
+
   return (
     <Router>
       <Routes>
         <Route path="/" element={<Login />} />
-        {/* Added route for Coordinator Dashboard */}
         <Route path="/coordinator-dashboard" element={<CoordinatorDashboard />} />
-        {/* You can add additional routes here */}
+        <Route path="/post-job" element={<PostJob setJobs={setJobs} />} />
+        <Route path="/jobs" element={<JobListings jobs={jobs} />} />
+        <Route path="/applied-students" element={<AppliedStudents />} />
+        <Route path="/eligible-students" element={<EligibleStudents />} /> 
       </Routes>
     </Router>
   );
