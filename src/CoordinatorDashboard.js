@@ -1,7 +1,14 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 const CoordinatorDashboard = () => {
+  const navigate = useNavigate();
+
+  const handleLogout = () => {
+    // Add any logout logic here (e.g., clearing tokens or user state)
+    navigate("/"); // Redirect to login page
+  };
+
   return (
     <div style={styles.container}>
       <h2 style={styles.heading}>Coordinator Dashboard</h2>
@@ -15,10 +22,12 @@ const CoordinatorDashboard = () => {
         <Link to="/applied-students" style={styles.link}>
           <button style={styles.button}>View Applied Students</button>
         </Link>
-    
         <Link to="/jobs" style={styles.link}>
           <button style={styles.button}>View Job Listings</button>
         </Link>
+        <button onClick={handleLogout} style={{ ...styles.button, marginTop: "20px" }}>
+          Logout
+        </button>
       </div>
     </div>
   );
